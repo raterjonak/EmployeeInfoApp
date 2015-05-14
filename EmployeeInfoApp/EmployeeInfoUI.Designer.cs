@@ -131,10 +131,11 @@
             this.EmployeeListView.GridLines = true;
             this.EmployeeListView.Location = new System.Drawing.Point(47, 212);
             this.EmployeeListView.Name = "EmployeeListView";
-            this.EmployeeListView.Size = new System.Drawing.Size(388, 203);
+            this.EmployeeListView.Size = new System.Drawing.Size(466, 204);
             this.EmployeeListView.TabIndex = 9;
             this.EmployeeListView.UseCompatibleStateImageBehavior = false;
             this.EmployeeListView.View = System.Windows.Forms.View.Details;
+            this.EmployeeListView.DoubleClick += new System.EventHandler(this.EmployeeListView_DoubleClick);
             // 
             // idColoumn
             // 
