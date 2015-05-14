@@ -43,6 +43,7 @@
             this.AddressColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.EmailColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SalaryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -140,31 +141,43 @@
             // idColoumn
             // 
             this.idColoumn.Text = "Id";
-            this.idColoumn.Width = 28;
             // 
             // NameColumn
             // 
             this.NameColumn.Text = "Name";
+            this.NameColumn.Width = 71;
             // 
             // AddressColumn
             // 
             this.AddressColumn.Text = "Address";
+            this.AddressColumn.Width = 73;
             // 
             // EmailColumn
             // 
             this.EmailColumn.Text = "                      Email";
-            this.EmailColumn.Width = 166;
+            this.EmailColumn.Width = 184;
             // 
             // SalaryColumn
             // 
             this.SalaryColumn.Text = "Salary";
-            this.SalaryColumn.Width = 75;
+            this.SalaryColumn.Width = 138;
+            // 
+            // deleteButton
+            // 
+            this.deleteButton.Location = new System.Drawing.Point(386, 134);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(75, 23);
+            this.deleteButton.TabIndex = 10;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // EmployeeInfoUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(542, 441);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.EmployeeListView);
             this.Controls.Add(this.saveButton);
             this.Controls.Add(this.addressTextBox);
@@ -200,6 +213,7 @@
         private System.Windows.Forms.ColumnHeader AddressColumn;
         private System.Windows.Forms.ColumnHeader EmailColumn;
         private System.Windows.Forms.ColumnHeader SalaryColumn;
+        private System.Windows.Forms.Button deleteButton;
     }
 }
 

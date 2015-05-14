@@ -44,6 +44,8 @@ namespace EmployeeInfoApp
                     MessageBox.Show("Update successful");
                     isUpdateMode = false;
                     saveButton.Text = "Save";
+                    emailTExtBox.Enabled = true;
+                    ClearAllTextBox();
                     ShowAllEmplyeeInfo();
 
                 }
@@ -81,10 +83,7 @@ namespace EmployeeInfoApp
                 if (rowAffected > 0)
                 {
                     MessageBox.Show("Insertion successful.");
-                    nameTextBox.Text = "";
-                    addressTextBox.Text = "";
-                    emailTExtBox.Text = "";
-                    salaryTextBox.Text = "";
+                   ClearAllTextBox();
 
                     ShowAllEmplyeeInfo();
                 }
@@ -223,6 +222,42 @@ namespace EmployeeInfoApp
             connection.Close();
 
             return employeeList.FirstOrDefault();
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            string query = "DELETE FROM Employee WHERE id='" + employeeId + "'";
+            SqlCommand command = new SqlCommand(query, connection);
+            connection.Open();
+            int rowUpdate = command.ExecuteNonQuery();
+            connection.Close();
+
+            if (rowUpdate > 0)
+            {
+                MessageBox.Show("Delete successful");
+                isUpdateMode = false;
+                saveButton.Text = "Save";
+                emailTExtBox.Enabled = true;
+                ClearAllTextBox();
+                ShowAllEmplyeeInfo();
+               
+            }
+
+            else
+            {
+                MessageBox.Show("Operation fail!");
+            }
+
+        }
+
+
+        public void ClearAllTextBox()
+        {
+            nameTextBox.Text = "";
+            addressTextBox.Text = "";
+            emailTExtBox.Text = "";
+            salaryTextBox.Text = "";
         }
 
     }
