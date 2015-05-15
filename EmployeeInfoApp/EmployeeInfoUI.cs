@@ -155,6 +155,7 @@ namespace EmployeeInfoApp
         public void LoadAllEmployeeListView(List<Employee> employees)
         {
             EmployeeListView.Items.Clear();
+            
             foreach (var employee in employees)
             {
                 ListViewItem item =new ListViewItem(employee.id.ToString());
@@ -164,6 +165,7 @@ namespace EmployeeInfoApp
                 item.SubItems.Add(employee.salary.ToString());
 
                 EmployeeListView.Items.Add(item);
+              
             }
         }
 
@@ -226,31 +228,40 @@ namespace EmployeeInfoApp
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-            string query = "DELETE FROM Employee WHERE id='" + employeeId + "'";
-            SqlCommand command = new SqlCommand(query, connection);
-            connection.Open();
-            int rowUpdate = command.ExecuteNonQuery();
-            connection.Close();
 
-            if (rowUpdate > 0)
-            {
-                MessageBox.Show("Delete successful");
-                isUpdateMode = false;
-                saveButton.Text = "Save";
-                emailTExtBox.Enabled = true;
-                ClearAllTextBox();
-                ShowAllEmplyeeInfo();
-               
-            }
+            DialogResult result = MessageBox.Show("Are you sure want to delete Employee", "!Red Alarmn",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-            else
+            if (result == DialogResult.Yes)
             {
-                MessageBox.Show("Operation fail!");
+
+
+                SqlConnection connection = new SqlConnection(connectionString);
+                string query = "DELETE FROM Employee WHERE id='" + employeeId + "'";
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                int rowUpdate = command.ExecuteNonQuery();
+                connection.Close();
+
+                if (rowUpdate > 0)
+                {
+                    MessageBox.Show("Delete successful");
+                    isUpdateMode = false;
+                    saveButton.Text = "Save";
+                    emailTExtBox.Enabled = true;
+                    ClearAllTextBox();
+                    ShowAllEmplyeeInfo();
+
+                }
+
+                else
+                {
+                    MessageBox.Show("Operation fail!");
+                }
+
             }
 
         }
-
 
         public void ClearAllTextBox()
         {
